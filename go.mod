@@ -1,3 +1,3 @@
-module gitee.com/zhaochuninhefei/zcgolog
+module github.com/xiazeyin/zcgolog
 
-go 1.17
+go 1.16
