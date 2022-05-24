@@ -16,7 +16,7 @@ zcgolog的使用很简单，直接依赖即可使用，默认使用本地模式�
 
 在对应的代码中使用:
 ```
-import "gitee.com/zhaochuninhefei/zcgolog/zclog"
+import "github.com/xiazeyin/zcgolog/zclog"
 ...
 
 func test() {
@@ -27,15 +27,15 @@ func test() {
 
 然后在相关工程的`go.mod`文件中添加:
 ```
-gitee.com/zhaochuninhefei/zcgolog latest
+github.com/xiazeyin/zcgolog latest
 ```
 
 然后在`go.mod`文件目录下执行`go mod tidy`即可。
 > `go mod tidy`命令遇到版本号`latest`时会自动下载最新版本。
 > 
-> 如果无法下载`gitee.com/zhaochuninhefei/zcgolog`，请将`gitee.com/zhaochuninhefei/zcgolog`设置为go的私有仓库，允许直接下载即可:
+> 如果无法下载`github.com/xiazeyin/zcgolog`，请将`github.com/xiazeyin/zcgolog`设置为go的私有仓库，允许直接下载即可:
 ```sh
-go env -w GOPRIVATE=gitee.com/zhaochuninhefei/zcgolog
+go env -w GOPRIVATE=github.com/xiazeyin/zcgolog
 ```
 
 ## 服务器模式
@@ -69,7 +69,7 @@ func initZcgolog() {
 
 示例如下:
 ```
-2022/05/07 16:56:39 [DEBUG] 时间:2022-05-07 16:56:39 代码:/home/zhaochun/work/sources/gitee.com/zhaochuninhefei/zcgolog/log/log_test.go 56 函数:gitee.com/zhaochuninhefei/zcgolog/log.writeLog 测试日志
+2022/05/07 16:56:39 [DEBUG] 时间:2022-05-07 16:56:39 代码:/home/zhaochun/work/sources/github.com/xiazeyin/zcgolog/log/log_test.go 56 函数:github.com/xiazeyin/zcgolog/log.writeLog 测试日志
 ```
 
 
@@ -85,7 +85,7 @@ curl "http://localhost:9300/zcgolog/api/level/global?level=1"
 # 修改指定函数的日志级别
 # 如果level传入[1~6]以外的值，则作为0处理，该函数的日志级别将采用全局日志级别
 # 修改成功返回 "操作成功"
-curl "http://localhost:9300/zcgolog/api/level/ctl?logger=gitee.com/zhaochuninhefei/zcgolog/log.writeLog&level=1"
+curl "http://localhost:9300/zcgolog/api/level/ctl?logger=github.com/xiazeyin/zcgolog/log.writeLog&level=1"
 
 # 查看全局日志级别
 # 返回值是日志级别对应的字符串，如 "debug","info","warning","error","panic","fatal"
@@ -93,14 +93,14 @@ curl "http://localhost:9300/zcgolog/api/level/query"
 
 # 查看指定函数的日志级别
 # 返回值是日志级别对应的字符串，如 "debug","info","warning","error","panic","fatal"
-curl "http://localhost:9300/zcgolog/api/level/query?logger=gitee.com/zhaochuninhefei/zcgolog/log.writeLog"
+curl "http://localhost:9300/zcgolog/api/level/query?logger=github.com/xiazeyin/zcgolog/log.writeLog"
 ```
 
 zcgolog的在线日志级别调整与查看的HttpAPI列表:
 
 | uri | URL参数 | 用途 |
 | --- | --- | --- |
-| /zcgolog/api/level/ctl | logger和level。logger是调整目标，对应具体函数的完整包名路径，如: `gitee.com/zhaochuninhefei/zcgolog/log.writeLog`；level是调整后的日志级别，支持从1到6，分别是DEBUG,INFO,WARNNING,ERROR,PANIC,FATAL。 | 用于在线修改目标函数的日志级别。 |
+| /zcgolog/api/level/ctl | logger和level。logger是调整目标，对应具体函数的完整包名路径，如: `github.com/xiazeyin/zcgolog/log.writeLog`；level是调整后的日志级别，支持从1到6，分别是DEBUG,INFO,WARNNING,ERROR,PANIC,FATAL。 | 用于在线修改目标函数的日志级别。 |
 | /zcgolog/api/level/global | level,指定全局日志级别 | 用于在线修改全局日志级别。 |
 | /zcgolog/api/level/query | logger,指定需要查看日志级别的目标函数,不传参数代表查看全局日志级别。 | 用于查看全局或指定函数的日志级别。 |
 
@@ -117,7 +117,7 @@ zcgolog的在线日志级别调整与查看的HttpAPI列表:
 
 示例如下:
 ```
-2022/05/07 16:57:31 [DEBUG] 代码:/home/zhaochun/work/sources/gitee.com/zhaochuninhefei/zcgolog/log/log_test.go 82 函数:gitee.com/zhaochuninhefei/zcgolog/log.TestLocalLog 测试日志
+2022/05/07 16:57:31 [DEBUG] 代码:/home/zhaochun/work/sources/github.com/xiazeyin/zcgolog/log/log_test.go 82 函数:github.com/xiazeyin/zcgolog/log.TestLocalLog 测试日志
 ```
 
 ## 配置及其默认值
@@ -191,7 +191,7 @@ zcgolog本地模式性能表现最差，相比直接使用golang原生`log`包�
 ```
 goos: linux
 goarch: amd64
-pkg: gitee.com/zhaochuninhefei/zcgolog/benchtest
+pkg: github.com/xiazeyin/zcgolog/benchtest
 cpu: 12th Gen Intel(R) Core(TM) i7-12700H
 BenchmarkLogServer-20    	 1960144	       587.0 ns/op	     441 B/op	       6 allocs/op
 BenchmarkLogLocal-20     	  566115	      2121 ns/op	     896 B/op	       9 allocs/op

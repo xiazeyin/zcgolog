@@ -1,6 +1,6 @@
 /*
    Copyright (c) 2022 zhaochun
-   gitee.com/zhaochuninhefei/zcgolog is licensed under Mulan PSL v2.
+   github.com/xiazeyin/zcgolog is licensed under Mulan PSL v2.
    You can use this software according to the terms and conditions of the Mulan PSL v2.
    You may obtain a copy of Mulan PSL v2 at:
             http://license.coscl.org.cn/MulanPSL2
@@ -21,7 +21,7 @@ import (
 const (
 	log_ctl_server_address         = "http://localhost:19300"
 	log_ctl_uri_level_query        = "/zcgolog/api/level/query"
-	log_ctl_uri_level_query_logger = "/zcgolog/api/level/query?logger=gitee.com/zhaochuninhefei/zcgolog/zclog.writeLog"
+	log_ctl_uri_level_query_logger = "/zcgolog/api/level/query?logger=github.com/xiazeyin/zcgolog/zclog.writeLog"
 )
 
 var end chan bool
@@ -63,15 +63,15 @@ func writeLog() {
 		}
 		if i == 45 {
 			// 从46开始，控制本函数的日志级别为DEBUG
-			changeLogLevel("/zcgolog/api/level/ctl?logger=gitee.com/zhaochuninhefei/zcgolog/zclog.writeLog&level=1")
+			changeLogLevel("/zcgolog/api/level/ctl?logger=github.com/xiazeyin/zcgolog/zclog.writeLog&level=1")
 		}
 		if i == 60 {
 			// 从61开始，控制本函数的日志级别为WARN
-			changeLogLevel("/zcgolog/api/level/ctl?logger=gitee.com/zhaochuninhefei/zcgolog/zclog.writeLog&level=3")
+			changeLogLevel("/zcgolog/api/level/ctl?logger=github.com/xiazeyin/zcgolog/zclog.writeLog&level=3")
 		}
 		if i == 75 {
 			// 从76开始，尝试控制本函数的日志级别为无效数值，此时目标函数将采用全局日志级别
-			changeLogLevel("/zcgolog/api/level/ctl?logger=gitee.com/zhaochuninhefei/zcgolog/zclog.writeLog&level=7")
+			changeLogLevel("/zcgolog/api/level/ctl?logger=github.com/xiazeyin/zcgolog/zclog.writeLog&level=7")
 		}
 		switch (i + 1) % 15 {
 		case 1:

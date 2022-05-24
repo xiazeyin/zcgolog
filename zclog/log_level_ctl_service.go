@@ -1,6 +1,6 @@
 /*
    Copyright (c) 2022 zhaochun
-   gitee.com/zhaochuninhefei/zcgolog is licensed under Mulan PSL v2.
+   github.com/xiazeyin/zcgolog is licensed under Mulan PSL v2.
    You can use this software according to the terms and conditions of the Mulan PSL v2.
    You may obtain a copy of Mulan PSL v2 at:
             http://license.coscl.org.cn/MulanPSL2
@@ -28,9 +28,9 @@ var runLogCtlServeOnce sync.Once
 
 // 处理指定函数的日志级别调整请求
 //  URL参数为logger和level;
-//  logger是调整目标，对应具体函数的完整包名路径，如: gitee.com/zhaochuninhefei/zcgolog/log.writeLog
+//  logger是调整目标，对应具体函数的完整包名路径，如: github.com/xiazeyin/zcgolog/log.writeLog
 //  level是调整后的日志级别，支持从1到6，分别是 DEBUG,INFO,WARNNING,ERROR,PANIC,FATAL
-//  一个完整的请求URL示例:http://localhost:9300/zcgolog/api/level/ctl?logger=gitee.com/zhaochuninhefei/zcgolog/zclog.writeLog&level=1
+//  一个完整的请求URL示例:http://localhost:9300/zcgolog/api/level/ctl?logger=github.com/xiazeyin/zcgolog/zclog.writeLog&level=1
 func handleLogLevelCtl(w http.ResponseWriter, req *http.Request) {
 	query := req.URL.Query()
 	logger := query.Get("logger")
@@ -86,9 +86,9 @@ func handleLogLevelQuery(w http.ResponseWriter, req *http.Request) {
 //  host与端口取决于具体的日志配置;
 //  URI固定为/zcgolog/api/level/ctl;
 //  URL参数为logger和level;
-//  logger是调整目标，对应具体函数的完整包名路径，如: gitee.com/zhaochuninhefei/zcgolog/log.writeLog ;
+//  logger是调整目标，对应具体函数的完整包名路径，如: github.com/xiazeyin/zcgolog/log.writeLog ;
 //  level是调整后的日志级别，支持从1到6，分别是 DEBUG,INFO,WARNNING,ERROR,CRITICAL,FATAL ;
-//  一个完整的请求URL示例:http://localhost:9300/zcgolog/api/level/ctl?logger=gitee.com/zhaochuninhefei/zcgolog/zclog.writeLog&level=1
+//  一个完整的请求URL示例:http://localhost:9300/zcgolog/api/level/ctl?logger=github.com/xiazeyin/zcgolog/zclog.writeLog&level=1
 func runLogCtlServe() {
 	listenAddress := zcgologConfig.LogLevelCtlHost + ":" + zcgologConfig.LogLevelCtlPort
 	http.HandleFunc("/zcgolog/api/level/ctl", handleLogLevelCtl)
